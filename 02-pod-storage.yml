@@ -1,0 +1,21 @@
+## common storage for pod containers
+# Kubernetes volumes provide a way for containers in a pod to access and share data via the filesystem
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-storage-1
+spec:
+  containers:
+    - name: test
+      image: rkalluru/learn8s:rhel9-bare
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /opt
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /usr/share/nginx/html
+  volumes:
+    - name: empty-dir
+      emptyDir: {}

@@ -1,0 +1,23 @@
+##Ephemeral containers in Kubernetes are a specialized type of temporary container designed for troubleshooting and debugging running pods. Unlike regular containers that are defined as part of a pod's static configuration and run for the pod's entire lifecycle, ephemeral containers can be dynamically added to an already running pod.
+# $ kubectl debug -it --attach=true -c debugger --image=busybox pod-init-container
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-debug-pod
+spec:
+  containers:
+    - name: my-app-container
+      image: nginx:latest
+      # ... other container configuration ...
+  ephemeralContainers:
+    - name: debugger-container
+      image: busybox:latest
+      command: ["sh"]
+      stdin: true
+      tty: true
+      targetContainerName: my-app-container # Specifies which container to target for namespaces
+      # You can also specify resource requests/limits, volumeMounts, etc., if needed
+      # resources:
+      #   limits:
+      #     cpu: "100m"
+      #     memory: "128Mi"

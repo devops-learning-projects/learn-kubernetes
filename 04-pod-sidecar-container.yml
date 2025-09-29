@@ -1,0 +1,20 @@
+# A sidecar container is a helper container that runs alongside a primary application container within the same pod or environment, providing supporting services or functionalities without altering the main application's code.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-sidecar-container
+spec:
+  containers:
+    - name: test
+      image: rkalluru/learnk8s:side-car-html-generator
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /mnt/html
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /usr/share/nginx/html
+  volumes:
+    - name: empty-dir
+      emptyDir: {}

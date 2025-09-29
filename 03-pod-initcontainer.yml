@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-storage-1
+  name: pod-init-container
 spec:
   initContainers:
     - name: test

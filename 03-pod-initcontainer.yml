@@ -1,0 +1,21 @@
+# In Kubernetes, an Init Container is a specialized container that runs to completion before any of the main application containers within a Pod start. Init Containers are designed to perform setup tasks or initialize specific conditions that the main application requires to run correctly.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-storage-1
+spec:
+  initContainers:
+    - name: test
+      image: rkalluru/learnk8s:init-container-html-generator
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /mnt/html
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /usr/share/nginx/html
+  volumes:
+    - name: empty-dir
+      emptyDir: {}

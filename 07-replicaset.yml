@@ -1,0 +1,21 @@
+## A ReplicaSet in Kubernetes is a controller that ensures a specified number of identical Pods (replicas) are running at all times. Its primary purpose is to maintain the availability and stability of your application by automatically replacing failed or terminated Pods.
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-demo
+  labels:
+    project: roboshop
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: nginx
+          image: nginx

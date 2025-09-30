@@ -31,3 +31,9 @@ spec:
   containers:
     - name: nginx
       image: nginx
+
+# we can control the number of replicas on cli also.
+# $ kubectl scale rs rs-demo --replicas=2 (the younger one will delete first)
+
+## Problems of ReplicaSet
+# 1. If you update the version of your image, even then your pods will not be updated.

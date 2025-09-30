@@ -2,7 +2,7 @@
 # A Deployment provides declarative updates for Pods and ReplicaSets.
 
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
   name: rs-demo
   labels:

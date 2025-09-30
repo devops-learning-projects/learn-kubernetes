@@ -43,6 +43,7 @@ metadata:
     project: example
     app: nginx
 spec:
+  MinReadySeconds: 15
   strategy:
     type: RollingUpdate
     rollingUpdate:

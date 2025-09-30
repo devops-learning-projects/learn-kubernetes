@@ -1,6 +1,40 @@
 # A Deployment manages a set of Pods to run an application workload, usually one that doesn't maintain state.
 # A Deployment provides declarative updates for Pods and ReplicaSets.
 
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: rs-demo
+#  labels:
+#    project: example
+#    app: nginx
+#spec:
+#  replicas: 3
+#  selector:
+#    matchLabels:
+#      app: nginx
+#  template:
+#    metadata:
+#      labels:
+#        app: nginx
+#    spec:
+#      containers:
+#        - name: nginx
+#          image: nginx:1.26
+
+# we can also update deployment from the cli
+# $ kubectl set image deployment/rs-demo nginx=nginx:1.16.1
+
+## The rollout gets stuck. You can verify it by checking the rollout status:
+# kubectl rollout status deployment/rs-demo --> to roll out the previous version
+# kubectl rollout history deployment/rs-demo --> to set rollout history
+
+#To see the details of each revision, run:
+# kubectl rollout history deployment/rs-demo  --revision=2
+##
+# kubectl rollout undo deployment/rs-demo
+
+## replicaset with Proportional scaling
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -9,6 +43,11 @@ metadata:
     project: example
     app: nginx
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   replicas: 3
   selector:
     matchLabels:
@@ -20,11 +59,4 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:1.26
-
-# we can also update deployment from the cli
-# $ kubectl set image deployment/rs-demo nginx=nginx:1.16.1
-
-## The rollout gets stuck. You can verify it by checking the rollout status:
-# kubectl rollout status deployment/rs-demo --> to roll out the previous version
-# kubectl rollout history deployment/rs-demo --> to set rollout history
+          image: nginx:1.24

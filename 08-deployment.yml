@@ -43,12 +43,6 @@ metadata:
     project: example
     app: nginx
 spec:
-  MinReadySeconds: 15
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
-    type: RollingUpdate
   replicas: 3
   selector:
     matchLabels:

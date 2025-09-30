@@ -36,6 +36,7 @@
 # kubectl rollout undo deployment/rs-demo
 
 ## replicaset with Proportional scaling
+#  Proportional scaling in Kubernetes, particularly in the context of Deployments with a RollingUpdate strategy, refers to how additional replicas are distributed among existing ReplicaSets during a scaling event (either up or down) while a rollout is in progress or paused. This behavior aims to mitigate risk by ensuring a balanced distribution of replicas across different versions of an application.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -4,17 +4,17 @@ kind: ReplicaSet
 metadata:
   name: rs-demo
   labels:
-    project: roboshop
-    app: frontend
+    project: example
+    app: nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: frontend
+      app: nginx
   template:
     metadata:
       labels:
-        app: frontend
+        app: nginx
     spec:
       containers:
         - name: nginx

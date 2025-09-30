@@ -1,5 +1,6 @@
 ## jobs represent one-off tasks that run to completion and then stop.
 # Their purpose is to reliably execute batch workloads, such as data processing or running a script, by ensuring that a specified number of pods successfully complete their tasks
+# In our roboshop project schema loading can be jobs
 apiVersion: batch/v1
 kind: Job
 metadata:

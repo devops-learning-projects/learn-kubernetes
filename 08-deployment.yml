@@ -44,6 +44,7 @@ metadata:
   name: rs-demo
   namespace: default
 spec:
+  MinReadySeconds: 15 # <-- This is the correct location for K8s 1.25+
   replicas: 3
   selector:
     matchLabels:
@@ -58,7 +59,6 @@ spec:
       labels:
         app: nginx
     spec:
-      MinReadySeconds: 15 # <-- This is the correct location
       containers:
         - image: nginx:1.24
           name: nginx

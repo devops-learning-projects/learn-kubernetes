@@ -38,27 +38,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: nginx
-    project: example
   name: rs-demo
-  namespace: default
+  labels:
+    project: example
+    app: nginx
 spec:
-  MinReadySeconds: 15 # <-- This is the correct location for K8s 1.25+
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
+  MinReadySeconds: 15
   strategy:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
     type: RollingUpdate
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
       labels:
         app: nginx
     spec:
       containers:
-        - image: nginx:1.24
-          name: nginx
+        - name: nginx
+          image: nginx:1.24

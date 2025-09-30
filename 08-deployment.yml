@@ -1,5 +1,6 @@
 # A Deployment manages a set of Pods to run an application workload, usually one that doesn't maintain state.
 # A Deployment provides declarative updates for Pods and ReplicaSets.
+# deployment in maintain by deployment controller
 
 #apiVersion: apps/v1
 #kind: Deployment

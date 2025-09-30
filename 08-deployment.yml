@@ -21,3 +21,10 @@ spec:
       containers:
         - name: nginx
           image: nginx:1.26
+
+# we can also update deployment from the cli
+# $ kubectl set image deployment/rs-demo nginx=nginx:1.16.1
+
+## The rollout gets stuck. You can verify it by checking the rollout status:
+# kubectl rollout status deployment/rs-demo --> to roll out the previous version
+# kubectl rollout history deployment/rs-demo --> to set rollout history

@@ -43,13 +43,13 @@ metadata:
     project: example
     app: nginx
 spec:
+  replicas: 3
+  minReadySeconds: 15   # <-- move it here
   strategy:
     type: RollingUpdate
-    MinReadySeconds: 15
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
-  replicas: 3
   selector:
     matchLabels:
       app: nginx
@@ -60,4 +60,4 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:1.23
+          image: nginx:1.25

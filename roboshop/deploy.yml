@@ -274,6 +274,9 @@ spec:
       containers:
         - name: schema
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/master-data.js
           envFrom:
             - configMapRef:
                 name: catalogue
@@ -291,6 +294,9 @@ spec:
       containers:
         - name: app-user
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/app-user.sql
           envFrom:
             - configMapRef:
                 name: shipping
@@ -307,6 +313,9 @@ spec:
       containers:
         - name: schema
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/schema.sql
           envFrom:
             - configMapRef:
                 name: shipping
@@ -323,6 +332,9 @@ spec:
       containers:
         - name: master-data
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/master-data.sql
           envFrom:
             - configMapRef:
                 name: shipping

@@ -1,0 +1,32 @@
+#A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+#
+#A ConfigMap allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable.
+#The Pod and the ConfigMap must be in the same namespace.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: game-demo
+data:
+  # property-like keys; each key maps to a simple value
+  player_initial_lives: "3"
+  ui_properties_file_name: "user-interface.properties"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-map-01
+spec:
+  containers:
+    - name: test
+      image: rkalluru/learnk8s:rhel9-bare
+      env:
+        - name: player_initial_lives
+          valueFrom:
+            configMapKeyRef:
+              name: game-demo           # The ConfigMap this value comes from.
+              key: player_initial_lives
+        - name: ui_properties_file_name
+          valueFrom:
+            configMapKeyRef:
+              name: game-demo           # The ConfigMap this value comes from.
+              key: ui_properties_file_name

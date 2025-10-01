@@ -114,6 +114,7 @@ data:
         }
     }
 ---
+# Mount will copy the nginx-conf file as it is.
 apiVersion: v1
 kind: Pod
 metadata:

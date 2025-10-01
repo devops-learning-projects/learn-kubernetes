@@ -21,6 +21,9 @@ spec:
       containers:
         - name: frontend
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
+          envFrom:
+            - configMapRef:
+                name: frontend
 ---
 # cart
 apiVersion: apps/v1
@@ -45,6 +48,9 @@ spec:
       containers:
         - name: cart
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+          envFrom:
+            - configMapRef:
+                name: cart
 ---
 # catalogue
 apiVersion: apps/v1
@@ -69,6 +75,9 @@ spec:
       containers:
         - name: catalogue
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
+          envFrom:
+            - configMapRef:
+                name: catalogue
 ---
 # mongodb
 apiVersion: apps/v1
@@ -117,6 +126,9 @@ spec:
       containers:
         - name: user
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+          envFrom:
+            - configMapRef:
+                name: user
 ---
 # mysql
 apiVersion: apps/v1
@@ -141,6 +153,9 @@ spec:
       containers:
         - name: mysql
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/mysql
+          envFrom:
+            - configMapRef:
+                name: mysql
 ---
 # redis
 apiVersion: apps/v1
@@ -189,6 +204,9 @@ spec:
       containers:
         - name: payment
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/payment
+          envFrom:
+            - configMapRef:
+                name: payment
 ---
 # shipping
 apiVersion: apps/v1
@@ -213,6 +231,9 @@ spec:
       containers:
         - name: shipping
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+          envFrom:
+            - configMapRef:
+                name: shipping
 ---
 # rabbitmq
 apiVersion: apps/v1
@@ -237,6 +258,9 @@ spec:
       containers:
         - name: rabbitmq
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/rabbitmq
+          envFrom:
+            - configMapRef:
+                name: rabbitmq
 ---
 # Jobs
 # catalogue schema
@@ -250,6 +274,9 @@ spec:
       containers:
         - name: schema
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          envFrom:
+            - configMapRef:
+                name: catalogue
       restartPolicy: Never
   backoffLimit: 0
 ---
@@ -264,6 +291,9 @@ spec:
       containers:
         - name: app-user
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          envFrom:
+            - configMapRef:
+                name: shipping
       restartPolicy: Never
   backoffLimit: 0
 ---
@@ -277,6 +307,9 @@ spec:
       containers:
         - name: schema
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          envFrom:
+            - configMapRef:
+                name: shipping
       restartPolicy: Never
   backoffLimit: 0
 ---
@@ -290,5 +323,8 @@ spec:
       containers:
         - name: master-data
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          envFrom:
+            - configMapRef:
+                name: shipping
       restartPolicy: Never
   backoffLimit: 0

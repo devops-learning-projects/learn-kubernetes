@@ -1,0 +1,79 @@
+# frontend needs to be access from outside the world. that's why, we need to set type as loadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer
+  selector:
+    project: roboshop
+    app: frontend
+  ports:
+    - port: 80
+      targetPort: 80
+---
+# catalogue
+# cluster ip is using
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue
+spec:
+  selector:
+    project: roboshop
+    app: catalogue
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+# user
+apiVersion: v1
+kind: Service
+metadata:
+  name: user
+spec:
+  selector:
+    project: roboshop
+    app: user
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+# cart
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart
+spec:
+  selector:
+    project: roboshop
+    app: cart
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+# shipping
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping
+spec:
+  selector:
+    project: roboshop
+    app: frontend
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+# payment
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+spec:
+  selector:
+    project: roboshop
+    app: payment
+  ports:
+    - port: 8080
+      targetPort: 8080

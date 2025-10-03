@@ -33,7 +33,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: user
+  name: cart
 data:
   REDIS_HOST           : "redis-dev.maidevops.fun"
   CATALOGUE_HOST       : "catalogue"

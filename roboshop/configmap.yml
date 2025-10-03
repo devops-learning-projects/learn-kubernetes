@@ -1,18 +1,19 @@
 # frontend config value
+# we are trying to connect internally. that's why we no longer need of -dev.maidevops.fun.
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: frontend
 data:
-  CATALOGUE_HOST   : "catalogue-dev.maidevops.fun"
+  CATALOGUE_HOST   : "catalogue"
   CATALOGUE_PORT   : "8080"
-  USER_HOST        : "user-dev.maidevops.fun"
+  USER_HOST        : "user"
   USER_PORT        : "8080"
-  CART_HOST        : "cart-dev.maidevops.fun"
+  CART_HOST        : "cart"
   CART_PORT        : "8080"
-  SHIPPING_HOST    : "shipping-dev.maidevops.fun"
+  SHIPPING_HOST    : "shipping"
   SHIPPING_PORT    : "8080"
-  PAYMENT_HOST     : "payment-dev.maidevops.fun"
+  PAYMENT_HOST     : "payment"
   PAYMENT_PORT     : "8080"
 ---
 # catalogue config value
@@ -28,6 +29,16 @@ data:
   DB_HOST         : "mongodb-dev.maidevops.fun"
   SCHEMA_FILE     : "db/master-data.js"
 ---
+# cart
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user
+data:
+  REDIS_HOST           : "redis-dev.maidevops.fun"
+  CATALOGUE_HOST       : "catalogue"
+  CATALOGUE_PORT       : "8080"
+---
 # user config value
 apiVersion: v1
 kind: ConfigMap
@@ -38,30 +49,13 @@ data:
   REDIS_URL       : "redis://redis-dev.maidevops.fun:6379"
   MONGO_URL       : "mongodb://mongodb-dev.maidevops.fun:27017/users"
 ---
-# mysql config value
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mysql
-data:
-  ROOT_PASSWORD     : "RoboShop@1"
----
-# rabbitmq config value
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: rabbitmq
-data:
-  APP_USER           : "roboshop"
-  APP_PASSWORD       : "roboshop123"
----
 # shipping config value
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: shipping
 data:
-  CART_ENDPOINT       : "cart-dev.maidevops.fun:8080"
+  CART_ENDPOINT       : "cart:8080"
   DB_HOST             : "mysql-dev.maidevops.fun"
   DB_USER             : "root"
   DB_PASS             : "RoboShop@1"
@@ -74,9 +68,9 @@ kind: ConfigMap
 metadata:
   name: payment
 data:
-  CART_HOST       : "cart-dev.maidevops.fun"
+  CART_HOST       : "cart"
   CART_PORT       : "8080"
-  USER_HOST       : "user-dev.maidevops.fun"
+  USER_HOST       : "user"
   USER_PORT       : "8080"
   AMQP_HOST       : "rabbitmq-dev.maidevops.fun"
   AMQP_USER       : "roboshop"

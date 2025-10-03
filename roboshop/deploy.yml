@@ -79,30 +79,6 @@ spec:
             - configMapRef:
                 name: catalogue
 ---
-# mongodb
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mongodb
-  labels:
-    project: roboshop
-    app: mongodb
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      project: roboshop
-      app: mongodb
-  template:
-    metadata:
-      labels:
-        project: roboshop
-        app: mongodb
-    spec:
-      containers:
-        - name: mongodb
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/mongodb
----
 # user
 apiVersion: apps/v1
 kind: Deployment
@@ -129,57 +105,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: user
----
-# mysql
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mysql
-  labels:
-    project: roboshop
-    app: mysql
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      project: roboshop
-      app: mysql
-  template:
-    metadata:
-      labels:
-        project: roboshop
-        app: mysql
-    spec:
-      containers:
-        - name: mysql
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/mysql
-          envFrom:
-            - configMapRef:
-                name: mysql
----
-# redis
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: redis
-  labels:
-    project: roboshop
-    app: redis
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      project: roboshop
-      app: redis
-  template:
-    metadata:
-      labels:
-        project: roboshop
-        app: redis
-    spec:
-      containers:
-        - name: redis
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/redis
 ---
 # payment
 apiVersion: apps/v1
@@ -234,33 +159,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: shipping
----
-# rabbitmq
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: rabbitmq
-  labels:
-    project: roboshop
-    app: rabbitmq
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      project: roboshop
-      app: rabbitmq
-  template:
-    metadata:
-      labels:
-        project: roboshop
-        app: rabbitmq
-    spec:
-      containers:
-        - name: rabbitmq
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/rabbitmq
-          envFrom:
-            - configMapRef:
-                name: rabbitmq
 ---
 # Jobs
 # catalogue schema

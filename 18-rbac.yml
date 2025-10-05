@@ -1,3 +1,5 @@
+# A service account is a type of non-human account that, in Kubernetes, provides a distinct identity in a Kubernetes cluster
+# Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles.
 apiVersion: v1
 kind: ServiceAccount
 metadata:

@@ -24,6 +24,18 @@ spec:
           envFrom:
             - configMapRef:
                 name: frontend
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+              initialDelaySeconds: 5
+              periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+              initialDelaySeconds: 5
+              periodSeconds: 5
 ---
 # cart
 apiVersion: apps/v1
@@ -51,6 +63,18 @@ spec:
           envFrom:
             - configMapRef:
                 name: cart
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
 ---
 # catalogue
 apiVersion: apps/v1
@@ -78,6 +102,18 @@ spec:
           envFrom:
             - configMapRef:
                 name: catalogue
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
 ---
 # user
 apiVersion: apps/v1
@@ -105,6 +141,18 @@ spec:
           envFrom:
             - configMapRef:
                 name: user
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
 ---
 # payment
 apiVersion: apps/v1
@@ -132,6 +180,18 @@ spec:
           envFrom:
             - configMapRef:
                 name: payment
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
 ---
 # shipping
 apiVersion: apps/v1
@@ -159,6 +219,18 @@ spec:
           envFrom:
             - configMapRef:
                 name: shipping
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
 ---
 # Jobs
 # catalogue schema

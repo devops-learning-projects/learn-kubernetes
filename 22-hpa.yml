@@ -2,6 +2,7 @@
 # 1. Horizontal Pod Autoscaler (HPA)
 # 2. Vertical Pod Autoscaler (VPA)
 # 3. Cluster Autoscaler (CA)
+# we will try to horizontally autoscale the  hpa-test (deployment) pod
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -1,0 +1,28 @@
+# There are three main types of probes in Kubernetes:
+# 1. Liveness Probes:
+# Purpose: Determine if an application within a container is still running and healthy.
+# 2. Readiness Probes:
+# Purpose: Determine if an application within a container is ready to serve traffic.
+# 3. Startup Probes:
+# Purpose: Determine if an application within a container has successfully started.
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness-exec
+spec:
+  containers:
+    - name: liveness
+      image: registry.k8s.io/busybox:1.27.2
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5

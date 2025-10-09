@@ -1,3 +1,6 @@
+# we set label to all the nodes on cli:
+# $ kubectl label node ip-172-31-46-89.ec2.internal affinity1=one
+
 # kubectl label node ip-172-31-27-134.ec2.internal affinity1=one
 # kubectl label node ip-172-31-28-215.ec2.internal affinity1=one
 #  kubectl label node ip-172-31-46-89.ec2.internal affinity1=one
@@ -46,4 +49,9 @@ spec:
                 values:
                   - two
 #  preferredDuringScheduling... will try to match the value. Even if the value does not match , pod will be scheduled.
+# You can specify a weight between 1 and 100 for each instance of the preferredDuringSchedulingIgnoredDuringExecution affinity type.
+#  Nodes with the highest total score are more prioritized
+
+#  You can use the operator field to specify a logical operator for Kubernetes to use when interpreting the rules. You can use In, NotIn, Exists, DoesNotExist, Gt and Lt.
+#  NotIn and DoesNotExist allow you to define node anti-affinity behavior
 

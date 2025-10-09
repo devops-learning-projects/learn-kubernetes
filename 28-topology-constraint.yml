@@ -1,3 +1,4 @@
+# we use topology constraint to spread pods to different nodes as we want.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -1,3 +1,5 @@
+# StatefulSet is a Kubernetes API object used to manage stateful applications, ensuring each of its Pods has a unique and persistent identity.
+# here in this example will be created 3 pods. if I delete a pod, a pod will be created immediately(instantly) with the same identity of the deleted pod.
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:

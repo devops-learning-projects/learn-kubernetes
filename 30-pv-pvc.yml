@@ -42,3 +42,5 @@ spec:
     - name: demo
       persistentVolumeClaim:
         claimName: pvc-from-pv
+
+# To run pv-pvc we need addons "Amazon EBS CSI Driver"(role:AmazonEKSPodIdentityAmazonEBSCSIDriverRole), and "Amazon EKS Pod Identity Agent".

@@ -26,4 +26,19 @@ spec:
       storage: 1Gi
   volumeName: pv-already-created-disk-1
   storageClassName: null
-
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvc-from-pv-pod
+spec:
+  containers:
+    - name: my-container
+      image: rkalluru/learnk8s:rhel9-bare
+      volumeMounts:
+        - name: demo
+          mountPath: /demo
+  volumes:
+    - name: demo
+      persistentVolumeClaim:
+        claimName: pvc-from-pv

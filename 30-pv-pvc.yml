@@ -12,4 +12,18 @@ spec:
     volumeID: vol-06f6c687ebe0be57c
     fsType: ext4
 
+---
+# creating pvc from an existing pv
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-from-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: pv-already-created-disk-1
+  storageClassName: null
 

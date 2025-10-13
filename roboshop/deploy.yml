@@ -28,14 +28,14 @@ spec:
             httpGet:
               path: /health
               port: 80
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /health
               port: 80
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 # cart
 apiVersion: apps/v1
@@ -67,14 +67,14 @@ spec:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 # catalogue
 apiVersion: apps/v1
@@ -106,14 +106,14 @@ spec:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 # user
 apiVersion: apps/v1
@@ -145,14 +145,14 @@ spec:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 # payment
 apiVersion: apps/v1
@@ -184,14 +184,14 @@ spec:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 # shipping
 apiVersion: apps/v1
@@ -223,14 +223,14 @@ spec:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /health
               port: 8080
-              initialDelaySeconds: 5
-              periodSeconds: 5
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ---
 # Jobs
 # catalogue schema

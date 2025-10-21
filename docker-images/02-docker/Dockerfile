@@ -8,4 +8,5 @@ RUN             dnf install iputils* -y
 USER            bin
 WORKDIR         /etc
 # ENTRYPOINT      ["id"]
-ENTRYPOINT      ["ping", "-c", "3"]
+ENTRYPOINT      ["ping", "-c", "2"]
+CMD             ["yahoo.com"]
